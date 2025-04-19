@@ -7,42 +7,39 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body class="bg-dark text-white "> <!--Resolver isso primeiro-->
+<body class="bg-dark text-white ">
 
   <div class="container py-5" style="max-width: 800px; margin: 0 auto;">  
 
-    <button id="theme-toggle" class="mb-2" style="background: none; border: none; cursor: pointer;">
+    <button id="theme-toggle" class="mb-5" style="background: none; border: none; cursor: pointer;">
         <img src="assets/sun-svgrepo-com.svg" alt="Theme" style="width: 24px; height: 24px;" /> 
     </button>
     
     <!--Centralizar e Colocar Icon ao lado do-->
-    <div id="cabeca" class="d-flex align-items-center justify-content-between mb-4">
+    <div id="header" class="d-flex align-items-center justify-content-between mb-4">
       <!-- Imagem e texto -->
       <div class="d-flex align-items-center">
         <img src="assets/my-photo.jpeg" alt="Douglas" class="rounded-circle" style="width: 150px; height: 150px;" />
         <div class="ms-3">
           <h1>Douglas Wesley</h1>
-          <p class="lead">Software Developer | Python & Java</p>
+          <p class="lead" style="font-size: 1.3rem;">Software Developer | Python & Java</p>
         </div>
       </div>
 
       <!-- Redes sociais e botão de tema -->
-      <div class="d-flex align-items-center">
-        <ul class="list-unstyled d-flex mb-0 me-3">
-          <li>
-            <a href="https://github.com/douglas-wesley" class="text-white me-3">GitHub</a>
-          </li>
-          <li>
-            <a href="https://x.com/NaoKimura18" class="text-white me-3">X</a>
-          </li>
-          <li>
-            <a href="https://linkedin.com/in/douglas-wesley" class="text-white me-3">LinkedIn</a>
-          </li>
-          <li>
-            <a href="mailto:me@levy.lat" class="text-white">Email</a>
-          </li>
-        </ul>
-        <!-- Botão de alternância de tema -->
+      <div id="social-midia" class="d-flex flex-column align-items-start ms-4">
+        <a href="https://github.com/douglas-wesley" class="text-white mb-2">
+            <img src="assets/github-142-svgrepo-com.svg" alt="GitHub" class="social-icon" style="width: 24px; height: 24px;" />
+        </a>
+        <a href="https://x.com/NaoKimura18" class="text-white mb-2">
+            <img src="assets/11053969_x_logo_twitter_new_brand_icon.svg" alt="X" class="social-icon" style="width: 24px; height: 24px;" />
+        </a>
+        <a href="https://linkedin.com/in/douglas-wesley" class="text-white mb-2">
+            <img src="assets/linkedin-161-svgrepo-com.svg" alt="LinkedIn" class="social-icon" style="width: 24px; height: 24px;" />
+        </a>
+        <a href="mailto:me@levy.lat" class="text-white">
+            <img src="assets/arroba-at-svgrepo-com.svg" alt="Email" class="social-icon" style="width: 24px; height: 24px;" />
+        </a>
       </div>
     </div>
  
@@ -75,8 +72,14 @@
     </section>
 
     <hr class="border-secondary" />
-    <section class="mb-5"> 
+
+    <section class="mb-5"> <!--Projects-->
         <h2 class="mb-4">Projects</h2>
+
+
+
+
+
         <div class="mb-4" style="border: 1px solid #1c1c1c; padding: 20px; border-radius: 5px; background: #1c1c1c;">
             <h4>Ciclo de Estudos - Projeto Academico</h4>
             <p style="font-size: 1.2rem;">
@@ -90,7 +93,7 @@
     <section class="mb-5">
       <h2>Education</h2>
       <div class="d-flex align-items-center">
-        <img src="/assets/Marcas_UFRPE-02-removebg-preview.png" alt="ufrpe" style="width: 150px; height: auto;"/>
+        <img src="/assets/Marcas_UFRPE-02-removebg-preview(3).png" alt="ufrpe" style="width: 150px; height: auto;"/>
         <div class="ms-3">
             <p style="font-size: 1.4rem;"><strong>UFRPE</strong> - Bachelor degree in System Information</p>
             <p style="font-size: 1rem; font-style: italic; color: gray; margin: 0;">Octuber 2024 - Present</p>
@@ -102,24 +105,37 @@
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
     const themeIcon = document.querySelector('#theme-toggle img');
-  
+    const themeMidia = document.querySelectorAll('.social-icon'); // Corrigido
+
     // Ajusta a cor do ícone ao carregar a página
     if (body.classList.contains('bg-dark')) {
       themeIcon.style.filter = 'invert(1)';
+      themeMidia.forEach(icon => {
+        icon.style.filter = 'invert(1)'; // Ícones claros no tema escuro
+      });
     } else {
       themeIcon.style.filter = 'invert(0)';
+      themeMidia.forEach(icon => {
+        icon.style.filter = 'invert(0)'; // Ícones escuros no tema claro
+      });
     }
-  
+
     // Alternar entre os temas claro e escuro
     themeToggle.addEventListener('click', () => {
       if (body.classList.contains('bg-dark')) {
         body.classList.remove('bg-dark', 'text-white');
         body.classList.add('bg-light', 'text-dark');
         themeIcon.style.filter = 'invert(0)';
+        themeMidia.forEach(icon => {
+          icon.style.filter = 'invert(0)'; // Ícones escuros no tema claro
+        });
       } else {
         body.classList.remove('bg-light', 'text-dark');
         body.classList.add('bg-dark', 'text-white');
         themeIcon.style.filter = 'invert(1)';
+        themeMidia.forEach(icon => {
+          icon.style.filter = 'invert(1)'; // Ícones claros no tema escuro
+        });
       }
     });
   </script>

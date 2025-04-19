@@ -10,7 +10,7 @@ a {
     width: 200px;
     height: 200px;
   }
-  
+
   body.bg-dark .svg-icon {
     filter: invert(100%) brightness(200%);
   }
@@ -32,4 +32,19 @@ a {
 
   body {
     position: relative;
+  }
+
+  /* Estilo padrão para os ícones */
+.social-icon {
+    transition: filter 0.3s ease; /* Suaviza a transição entre os temas */
+  }
+  
+  /* Tema escuro: ícones claros */
+  body.bg-dark .social-icon {
+    filter: invert(100%) brightness(200%);
+  }
+  
+  /* Tema claro: ícones escuros */
+  body.bg-light .social-icon {
+    filter: invert(0%) brightness(100%);
   }
